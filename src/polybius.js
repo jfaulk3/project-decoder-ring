@@ -5,8 +5,8 @@
 
 const polybiusModule = (function () {
   // you can add any code you want within this function scope
-  const {isLetter, isNumber} = require('../src/helper');
   function polybius(input = "", encode = true) {
+    const {isLetter, isNumber} = require('../src/helper');
     // your solution code here
     if (input == "") return false;
     let dictionary = {

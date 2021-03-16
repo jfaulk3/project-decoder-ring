@@ -5,8 +5,8 @@
 
 const caesarModule = (function () {
   // you can add any code you want within this function scope
-  const {isLetter} = require('../src/helper');
   function caesar(input, shift = 0, encode = true) {
+    const {isLetter} = require('../src/helper');
     // your solution code here
     if (shift < -25 || shift > 25 || shift === 0) return false; //Guard clause
 

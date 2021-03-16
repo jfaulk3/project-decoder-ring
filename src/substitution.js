@@ -5,8 +5,8 @@
 
 const substitutionModule = (function () {
   // you can add any code you want within this function scope
-  const {isLetter} = require('../src/helper');
   function substitution(input, alphabet = "", encode = true) {
+    const {isLetter} = require('../src/helper');
     // your solution code here
     if (alphabet.length !== 26 || !isUnique(alphabet)) return false;
     let dictionary = translate(alphabet);
