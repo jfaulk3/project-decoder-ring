@@ -5,7 +5,7 @@
 
 const polybiusModule = (function () {
   // you can add any code you want within this function scope
-
+  const {isLetter, isNumber} = require('../src/helper');
   function polybius(input = "", encode = true) {
     // your solution code here
     if (input == "") return false;
@@ -42,8 +42,8 @@ const polybiusModule = (function () {
       return input
         .split("")
         .map((char) => {
-          if (char === " ") return " ";
-          if (char === "i" || char === "j") return "42";
+          if (!isLetter(char)) return char;
+          if (("ij").includes(char)) return "42";
           return Object.keys(dictionary).find((key) => {
             //Searches all keys in dictionary to find char value.
             return dictionary[key] === char;
@@ -51,12 +51,12 @@ const polybiusModule = (function () {
         })
         .join("");
     } else {
-      if (!(input.split(" ").join("").length % 2 === 0)) return false; //returns false if length of all numbers is odd.
-
+      if (input.replace(/\D/, "").length & 1) return false; //returns false if length of all numbers is odd.
       input = input.match(/(\d{2})|(\s)/g); //regex splits input.
+
       return input
         .map((key) => {
-          if (key === " ") return " ";
+          if (!isNumber(key)) return key; //preserves spaces and symbols.
           return dictionary[key];
         })
         .join("");

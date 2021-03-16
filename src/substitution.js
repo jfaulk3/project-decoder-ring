@@ -5,7 +5,7 @@
 
 const substitutionModule = (function () {
   // you can add any code you want within this function scope
-
+  const {isLetter} = require('../src/helper');
   function substitution(input, alphabet = "", encode = true) {
     // your solution code here
     if (alphabet.length !== 26 || !isUnique(alphabet)) return false;
@@ -15,7 +15,7 @@ const substitutionModule = (function () {
       return input
         .split("")
         .map((char) => {
-          if (char === " ") return " ";
+          if (!isLetter(char)) return char; //preserves spaces and symbols
           return dictionary[char];
         })
         .join("");
@@ -23,7 +23,7 @@ const substitutionModule = (function () {
       return input
         .split("")
         .map((char) => {
-          if (char === " ") return " ";
+          if (!isLetter(char)) return char;
           return Object.keys(dictionary).find((key) => {
             return dictionary[key] === char;
           });

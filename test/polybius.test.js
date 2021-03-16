@@ -8,6 +8,11 @@ describe("polybius()", () => {
     let actual = polybius("thinkful");
     expect(actual).to.equal(expected);
   });
+  it("should decode the input", () => {
+    let expected = "th(i/j)nkful";
+    let actual = polybius("4432423352125413", false);
+    expect(actual).to.equal(expected);
+  });
   it("should maintain spaces throughout", () => {
     let expected = "3251131343 2543241341";
     let actual = polybius("Hello world");
@@ -27,7 +32,7 @@ describe("polybius()", () => {
     let actual = polybius("42", false);
     expect(actual).to.equal(expected);
   });
-  it("should ignore capital letters when decoding", () => {
+  it("should ignore capital letters when encoding", () => {
     let testA = polybius("Hello world");
     let testB = polybius("hELLo woRLd");
     expect(testA).to.equal(testB);
